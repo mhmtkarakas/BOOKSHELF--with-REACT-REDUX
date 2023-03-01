@@ -11,12 +11,48 @@
     },
     {
       "id": "2",
-      "name": "İnce Memed",
-      "author": "Yaşar Kemal",
-      "publisher": "YKY Yayınları",
-      "isbn": "121234353554",
-      "price": 69.99,
+      "name": "sefiller",
+      "author": "victor hugo",
+      "publisher": "iş bankası yayınları",
+      "isbn": "24568524536",
+      "price": 80,
       "categoryId": "1"
+    },
+    {
+      "id": "1677672493503",
+      "name": "suç ve ceza",
+      "author": "dostoyevski",
+      "publisher": "iş bankası yayınları",
+      "isbn": "98564556252536",
+      "price": 99,
+      "categoryId": "1",
+      "form": {
+        "id": "1677672493503",
+        "name": "suç ve ceza",
+        "author": "dostoyevski",
+        "publisher": "iş bankası yayınları",
+        "isbn": "98564556252536",
+        "price": 99,
+        "categoryId": "1"
+      }
+    },
+    {
+      "id": "1677672563547",
+      "name": "karamazov kardeşler",
+      "author": "dostoyevski",
+      "publisher": "iş bankası yayınları",
+      "isbn": "998564556252536",
+      "price": 150,
+      "categoryId": "1",
+      "form": {
+        "id": "1677672563547",
+        "name": "karamazov kardeşler",
+        "author": "dostoyevski",
+        "publisher": "iş bankası yayınları",
+        "isbn": "998564556252536",
+        "price": 150,
+        "categoryId": "1"
+      }
     }
   ],
   "categories": [

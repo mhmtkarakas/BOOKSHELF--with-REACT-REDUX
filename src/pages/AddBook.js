@@ -120,7 +120,7 @@ const AddBook = () => {
           </div>
           <select
             className="form-select"
-            defaultValue={categoriesState.categories[0].id}
+           // defaultValue={categoriesState.categories[0].id}
             value={form.categoryId}
             onChange={(event) =>
               setForm({ ...form, categoryId: event.target.value })
@@ -135,7 +135,7 @@ const AddBook = () => {
 
           <div className="d-flex justify-content-center my-5">
             <button className="btn btn-primary w-50" type="submit">
-              Kaydet
+              Güncelle
             </button>
           </div>
         </form>

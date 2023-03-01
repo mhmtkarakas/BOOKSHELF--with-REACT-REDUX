@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import api from "../api/api";
 import urls from "../api/urls";
@@ -11,8 +11,20 @@ const ListBooks = () => {
   const { booksState, categoriesState } = useSelector((state) => state);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [willDeleteBook, setWillDeleteBook] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState(booksState.books);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const temp = booksState.books.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase()) === true
+    );
+    setFilteredBooks(temp);
+    console.log(setFilteredBooks);
+  }, [searchText, booksState.books]);
+
   const deleteBook = (id) => {
     dispatch({ type: actionTypes.bookActions.DELETE_BOOK_START });
     api
@@ -33,12 +45,19 @@ const ListBooks = () => {
 
   return (
     <div className="my-5">
-      <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-between">
+        <input
+          className="form-control w-75 "
+          type="text"
+          placeholder="Lütfen kitap ismini giriniz"
+          value={searchText}
+          onChange={(event) => setSearchText(event.target.value)}
+        />
         <Link to={"/add-book"} className="btn btn-primary">
           Kitap Ekle
         </Link>
       </div>
-      <table className="table table-striped ">
+      <table className="table table-striped my-5 ">
         <thead>
           <tr>
             <th scope="col">Sıra No</th>
@@ -49,7 +68,7 @@ const ListBooks = () => {
           </tr>
         </thead>
         <tbody>
-          {booksState.books.map((book, index) => {
+          {filteredBooks.map((book, index) => {
             let myCategory = null;
             for (let i = 0; i < categoriesState.categories.length; i++) {
               if (categoriesState.categories[i].id === book.categoryId) {

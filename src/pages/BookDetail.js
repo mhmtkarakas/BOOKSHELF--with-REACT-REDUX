@@ -1,7 +1,6 @@
 import React, {useEffect,useState} from 'react';
 import Header from '../components/Header'
 import {useParams} from 'react-router-dom'
-import { useSelector } from 'react-redux';
 import api from '../api/api'
 import urls from '../api/urls';
 import { Link } from 'react-router-dom';
@@ -22,7 +21,7 @@ const BookDetail =()=>{
             .catch(err=>{})
         })
         .catch(err=>{})
-    },[])
+    },[params.bookId])
     if(myBook===null || bookCategory=== null) return null
     return(
         <div>

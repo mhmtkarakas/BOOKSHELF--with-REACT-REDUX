@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector,useDispatch} from "react-redux";
 
 import api from "../api/api";
 import urls from "../api/urls";
 
+import actionTypes from "../redux/actions/actionTypes";
+
 const EditBook = () => {
   const params = useParams();
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
   const { booksState, categoriesState } = useSelector((state) => state);
   const myBook = booksState.books.find((item) => item.id === params.bookId);
   console.log(myBook);
@@ -22,7 +26,8 @@ const EditBook = () => {
       }
       api.put(`${urls.books}/${params.bookId}`,form)
       .then(res=>{
-        
+        dispatch({type:actionTypes.bookActions.EDIT_BOOK,payload:form})
+        navigate("/")
       })
       .catch(err=>{})
   }
