@@ -8,9 +8,11 @@ const HomePage=()=>{
 
   
      return(
-        <div>
+        <div >
             <Header />
+            <div className='container'>
             <ListBooks />
+            </div>
         </div>
      )
 }

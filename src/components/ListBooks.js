@@ -5,12 +5,12 @@ import urls from "../api/urls";
 import "../assets/styles/buttons.css";
 import actionTypes from "../redux/actions/actionTypes";
 import CustomModal from "./CustomModal";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const ListBooks = () => {
   const { booksState, categoriesState } = useSelector((state) => state);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [willDeleteBook,setWillDeleteBook] = useState("")
+  const [willDeleteBook, setWillDeleteBook] = useState("");
 
   const dispatch = useDispatch();
   const deleteBook = (id) => {
@@ -34,7 +34,9 @@ const ListBooks = () => {
   return (
     <div className="my-5">
       <div className="d-flex justify-content-end">
-        <Link to={"/add-book"} className="btn btn-primary">Kitap Ekle</Link>
+        <Link to={"/add-book"} className="btn btn-primary">
+          Kitap Ekle
+        </Link>
       </div>
       <table className="table table-striped ">
         <thead>
@@ -62,16 +64,26 @@ const ListBooks = () => {
                 <td>{myCategory.name}</td>
                 <td>
                   <button
-                    onClick={() =>{ 
-                      setShowDeleteModal(true)
-                      setWillDeleteBook(book.id)
+                    onClick={() => {
+                      setShowDeleteModal(true);
+                      setWillDeleteBook(book.id);
                     }}
-                    className="generalBtn deleteBtn"  
+                    className="generalBtn deleteBtn"
                   >
                     Sil
                   </button>
-                  <button className="generalBtn editBtn">Guncelle</button>
-                  <Link to={`/book-detail/${book.id}`} className="generalBtn detailBtn">Detay</Link>
+                  <Link
+                    to={`/edit-book/${book.id}`}
+                    className="generalBtn editBtn"
+                  >
+                    Guncelle
+                  </Link>
+                  <Link
+                    to={`/book-detail/${book.id}`}
+                    className="generalBtn detailBtn"
+                  >
+                    Detay
+                  </Link>
                 </td>
               </tr>
             );
@@ -82,10 +94,10 @@ const ListBooks = () => {
         <CustomModal
           title="silme"
           message="silmek istediğinize emin misiniz?"
-          onCancel={()=>setShowDeleteModal(false)}
-          onConfirm=
-          {()=>{deleteBook(willDeleteBook)
-            setShowDeleteModal(false)
+          onCancel={() => setShowDeleteModal(false)}
+          onConfirm={() => {
+            deleteBook(willDeleteBook);
+            setShowDeleteModal(false);
           }}
         />
       )}
