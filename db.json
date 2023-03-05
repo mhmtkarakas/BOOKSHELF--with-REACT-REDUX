@@ -19,31 +19,13 @@
       "categoryId": "1"
     },
     {
-      "id": "1677672493503",
-      "name": "suç ve ceza",
-      "author": "dostoyevski",
-      "publisher": "iş bankası yayınları",
-      "isbn": "98564556252536",
-      "price": 99,
-      "categoryId": "1",
-      "form": {
-        "id": "1677672493503",
-        "name": "suç ve ceza",
-        "author": "dostoyevski",
-        "publisher": "iş bankası yayınları",
-        "isbn": "98564556252536",
-        "price": 99,
-        "categoryId": "1"
-      }
-    },
-    {
       "id": "1677672563547",
-      "name": "karamazov kardeşler",
-      "author": "dostoyevski",
+      "name": "Bir Akşam Üstü",
+      "author": "Atilla İlhan",
       "publisher": "iş bankası yayınları",
       "isbn": "998564556252536",
       "price": 150,
-      "categoryId": "1",
+      "categoryId": "2",
       "form": {
         "id": "1677672563547",
         "name": "karamazov kardeşler",
@@ -52,6 +34,78 @@
         "isbn": "998564556252536",
         "price": 150,
         "categoryId": "1"
+      }
+    },
+    {
+      "id": "1678015611908",
+      "name": "Bir Akşam",
+      "author": "Atilla İlhan",
+      "publisher": "Işık",
+      "isbn": "85625364523",
+      "price": 80,
+      "categoryId": "2",
+      "form": {
+        "id": "1678015611908",
+        "name": "Bir Akşam",
+        "author": "Atilla İlhan",
+        "publisher": "Işık",
+        "isbn": "85625364523",
+        "price": 80,
+        "categoryId": "2"
+      }
+    },
+    {
+      "id": "1678022836217",
+      "name": "jpşışjı",
+      "author": "knoışım",
+      "publisher": "şlkmoşpkm",
+      "isbn": "956425365856",
+      "price": 100,
+      "categoryId": "1",
+      "form": {
+        "id": "1678022836217",
+        "name": "jpşışjı",
+        "author": "knoışım",
+        "publisher": "şlkmoşpkm",
+        "isbn": "956425365856",
+        "price": 100,
+        "categoryId": "1"
+      }
+    },
+    {
+      "id": "1678024872720",
+      "name": "lmlş.",
+      "author": "pklpği",
+      "publisher": "lpilİ;",
+      "isbn": "98564556252536",
+      "price": 80,
+      "categoryId": "2",
+      "form": {
+        "id": "1678024872720",
+        "name": "lmlş.",
+        "author": "pklpği",
+        "publisher": "lpilİ;",
+        "isbn": "98564556252536",
+        "price": 80,
+        "categoryId": "2"
+      }
+    },
+    {
+      "id": "1678024923643",
+      "name": "nıoşji",
+      "author": "şlöği",
+      "publisher": "fvdfb",
+      "isbn": "65325364565855",
+      "price": 100,
+      "categoryId": "2",
+      "form": {
+        "id": "1678024923643",
+        "name": "nıoşji",
+        "author": "şlöği",
+        "publisher": "fvdfb",
+        "isbn": "65325364565855",
+        "price": 100,
+        "categoryId": "2"
       }
     }
   ],
@@ -65,7 +119,7 @@
       "name": "Şiir"
     },
     {
-      "id": "3",
+      "id": "1678028452995",
       "name": "Deneme"
     }
   ]

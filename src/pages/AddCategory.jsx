@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 
 import Header from "../components/Header";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import api from "../api/api"
-import urls from "../api/urls"
+import api from "../api/api";
+import urls from "../api/urls";
+
+import actionTypes from "../redux/actions/actionTypes";
+
+import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { categoriesState } = useSelector((state) => state);
   const [form, setForm] = useState({
     id: String(new Date().getTime()),
@@ -20,16 +26,23 @@ const AddCategory = () => {
       return;
     }
     const hasCategory = categoriesState.categories.find(
-      (item) => item.name.toLowerCase === form.name.toLowerCase
+      (item) => item.name.toLowerCase() === form.name.toLowerCase()
     );
     console.log(hasCategory);
     if (hasCategory !== undefined) {
       alert("Böyle bir kategori mevcut");
       return;
     }
-    api.post(urls.categories,form)
-    .then(res=>{})
-    .catch(err=>{})
+    api
+      .post(urls.categories, form)
+      .then((res) => {
+        dispatch({
+          type: actionTypes.categoryActions.ADD_CATEGORY,
+          payload: form,
+        });
+        navigate("/");
+      })
+      .catch((err) => {});
   };
   return (
     <div>

@@ -56,7 +56,7 @@ const booksReducer=(state=initialState, action)=>{
                     case actionTypes.bookActions.ADD_BOOK:
                         return{
                             ...state,
-                            book:[...state.books,action.payload]
+                            books:[...state.books,action.payload]
                             
                         }
                         case actionTypes.bookActions.EDIT_BOOK:
@@ -72,6 +72,12 @@ const booksReducer=(state=initialState, action)=>{
                                 ...state,
                                 books:temp
                             }
+                        case actionTypes.categoryActions.DELETE_BOOK_AFTER_DELETE_CATEGORY:
+                           var temp1=state.books.filter(item=>item.categoryId !== action.payload)
+                           return{
+                            ...state,
+                            books:temp1
+                           }
         
         default:
 

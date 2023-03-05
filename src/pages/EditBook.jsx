@@ -129,7 +129,7 @@ const EditBook = () => {
 
           <div className="d-flex justify-content-center my-5">
             <button className="btn btn-primary w-50" type="submit">
-              Kaydet
+              Güncelle
             </button>
           </div>
         </form>

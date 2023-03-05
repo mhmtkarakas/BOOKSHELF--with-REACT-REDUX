@@ -17,7 +17,7 @@ const AddBook = () => {
     publisher: "",
     isbn: "",
     price: "",
-    categoryId: categoriesState.categories[0].id
+    categoryId: categoriesState.categories[0].id,
   });
 
   const handleSubmit = (event) => {
@@ -30,7 +30,7 @@ const AddBook = () => {
     /* request to api */
 
     api
-      .post(urls.books, { ...form, form })
+      .post(urls.books, form)
       .then((res) => {
         dispatch({ type: actionTypes.bookActions.ADD_BOOK, payload: form });
         navigate("/");
@@ -120,7 +120,7 @@ const AddBook = () => {
           </div>
           <select
             className="form-select"
-           // defaultValue={categoriesState.categories[0].id}
+            // defaultValue={categoriesState.categories[0].id}
             value={form.categoryId}
             onChange={(event) =>
               setForm({ ...form, categoryId: event.target.value })
@@ -135,7 +135,7 @@ const AddBook = () => {
 
           <div className="d-flex justify-content-center my-5">
             <button className="btn btn-primary w-50" type="submit">
-              Güncelle
+              Kaydet
             </button>
           </div>
         </form>

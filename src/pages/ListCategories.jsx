@@ -1,19 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Header from "../components/Header";
-import { useSelector } from "react-redux";
-import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import CustomModal from "../components/CustomModal";
+import actionTypes from "../redux/actions/actionTypes";
+import api from "../api/api";
+import urls from "../api/urls";
 
 const ListCategories = () => {
-  const { categoriesState, booksState } = useSelector((state) => state);
- // console.log(categoriesState);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [willDeleteCategory, setWillDeleteCategory] = useState("");
 
+  const { categoriesState, booksState } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  // console.log(categoriesState);
+  const deleteCategory = (id) => {
+    const books = booksState.books.filter((item) => item.categoryId === id);
+    console.table(books);
+    api
+      .delete(`${urls.categories}/${id}`)
+      .then((resCat) => {
+        dispatch({
+          type: actionTypes.categoryActions.DELETE_CATEGORY,
+          payload: id,
+        });
+        // books.map((item) => {
+        //   api
+        //     .delete(`${urls.books}/${item.id}`)
+        //     .then((res) => {
+        //       dispatch({
+        //         type: actionTypes.bookActions.DELETE_BOOK_SUCCESS,
+        //         payload: item.id,
+        //       });
+        //     })
+        //     .catch((err) => {});
+        // });
+        dispatch({type:actionTypes.bookActions.DELETE_BOOK_AFTER_DELETE_CATEGORY,payload:id})
+      })
+      
+      .catch((err) => {});
+    setOpenDeleteModal(false);
+  };
   return (
     <div>
-      <Header /> 
+      <Header />
       <div className="container my-5">
         <div className="d-flex justify-content-end">
-            <Link className="btn btn-primary" to={"/add-category"}>Kategori Ekle</Link>
+          <Link className="btn btn-primary" to={"/add-category"}>
+            Kategori Ekle
+          </Link>
         </div>
         <table className="table">
           <thead>
@@ -33,14 +70,32 @@ const ListCategories = () => {
             {categoriesState.categories.length > 0 && (
               <>
                 {categoriesState.categories.map((category, index) => {
-                    const books=booksState.books.filter(item=>item.categoryId===category.id)
-                    console.log(books)
+                  const books = booksState.books.filter(
+                    (item) => item.categoryId === category.id
+                  );
+                  console.log(books);
                   return (
                     <tr key={category.id}>
                       <th scope="row">{index + 1}</th>
                       <td>{category.name}</td>
                       <td>{books.length}</td>
-                      <td>@mdo</td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            setOpenDeleteModal(true);
+                            setWillDeleteCategory(category.id);
+                          }}
+                          className="btn btn-sm btn-danger"
+                        >
+                          Sil
+                        </button>
+                        <Link
+                          className="btn btn-sm btn-secondary"
+                          to={`/edit-category/${category.id}`}
+                        >
+                          Güncelle
+                        </Link>
+                      </td>
                     </tr>
                   );
                 })}
@@ -49,6 +104,14 @@ const ListCategories = () => {
           </tbody>
         </table>
       </div>
+      {openDeleteModal === true && (
+        <CustomModal
+          title="Kategori Silme"
+          message="Kategori ile beraber ilgili bütün kitaplar da silinecektir. Bu işlemi yapmak istediğinize emin misiniz?"
+          onCancel={() => setOpenDeleteModal(false)}
+          onConfirm={() => deleteCategory(willDeleteCategory)}
+        />
+      )}
     </div>
   );
 };
