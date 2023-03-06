@@ -11,6 +11,7 @@ import Error from "./pages/Error";
 import EditBook from "./pages/EditBook";
 import ListCategories from "./pages/ListCategories";
 import AddCategory from "./pages/AddCategory"
+import EditCategory from "./pages/EditCategory"
 
 
 
@@ -31,6 +32,7 @@ function App() {
    /* fetch categories */
    dispatch({type:actionTypes.categoryActions.GET_CATEGORIES_START})
    api.get(urls.categories)
+
    .then((res)=>{
     dispatch({type:actionTypes.categoryActions.GET_CATEGORIES_SUCCESS,payload:res.data});
    })
@@ -52,6 +54,7 @@ function App() {
         <Route path='/edit-book/:bookId' element={<EditBook />} />
         <Route path='/list-categories' element={<ListCategories />}/>
         <Route path='/add-category' element= {<AddCategory />}/>
+        <Route path='/edit-category/:categoryId' element = {<EditCategory />}/>
         <Route path="*" element={<Error />}/>
       </Routes>
     </BrowserRouter>
